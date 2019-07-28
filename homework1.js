@@ -56,7 +56,6 @@ const findEven(start = 0, end = 0) => {
 		// for( let j =0; j < current.length; j++ ) {
 		// 	if( current[j]%2 !== 0){
 		// 		isEven = false;
-		//    // Missed break!!!!
 		// 		break;
 		// 	}
 		// }
