@@ -60,7 +60,11 @@ function sumOfDigits(number) {
 function objectFlip(obj) {
   const fliped = {};
   Object.keys(obj).forEach((key) => {
-    fliped[obj[key]] = key;
+	if ( fliped[obj[key]] ) {
+		 fliped[obj[key]] = [...fliped[obj[key]],key]
+	} else {
+    	fliped[obj[key]] = key;
+    }
   });
   return fliped;
 }
