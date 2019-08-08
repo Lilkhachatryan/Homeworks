@@ -58,9 +58,15 @@ function sumOfDigits(number) {
 // 4. 
 
 function objectFlip(obj) {
-  const ret = {};
+  const fliped = {};
   Object.keys(obj).forEach((key) => {
-    ret[obj[key]] = key;
+	if ( fliped[obj[key]] ) {
+		 fliped[obj[key]] = [...fliped[obj[key]],key]
+	} else {
+    	fliped[obj[key]] = key;
+    }
   });
-  return ret;
+  return fliped;
 }
+
+
