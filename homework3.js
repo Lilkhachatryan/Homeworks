@@ -104,18 +104,18 @@ removeDuplicates([1, 2, 3, 3, 2, 2,5])
 
 // 6. 
 
-const productneighbours = (arr = []) => {
+const productNeighbours = (arr = []) => {
 	const arrLength = arr.length;
 
 	let newArr = [];
 
 	for(let index = 0; index < arrLength - 1 ; index++) {
-		newArr.push(index === arrLength - 1 ? arr[index + 1] : arr[index] * arr[index + 1]);
+		newArr.push(arr[index] * arr[index + 1]);
 	}
 	return newArr;
 }
 
-productneighbours([3, 7, 12, 5, 20, 0]);
+productNeighbours([3, 7, 12, 5, 20, 0]);
 
 
 
