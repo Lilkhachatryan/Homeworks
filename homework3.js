@@ -2,22 +2,18 @@
 
 const productOfArrayItems = (arr = []) => {
 	let p = 1;
-	let is_negative = false;	
+	let is_negative = false;
 
 	if(!(arr.every(item => Array.isArray(item)))) return 'Invalid Argument';
 
 	arr.map(item => {		
-		if(item.every(x => x >= 0)) {
-			is_negative = true; 
-			return
-		};
-
 		let max = Math.max(...item.filter(x => x < 0));
 		if(max !== -Infinity) {
+			is_negative = true;
 			p *= max;
 		} 
 	});
-	return is_negative ? 'No negatives' : p;
+	return !is_negative ? 'No negatives' : p;
 }
 
 productOfArrayItems([1, 2, 3]);
