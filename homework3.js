@@ -2,23 +2,22 @@
 
 const productOfArrayItems = (arr = []) => {
 	let p = 1;
-	let is_negative = false;
-	let is_array = true;
+	let is_negative = false;	
 
-	arr.map(item => {
-		if(!Array.isArray(item)) { 
-			is_array = false;
+	if(!(arr.every(item => Array.isArray(item)))) return 'Invalid Argument';
 
-			return 
-		}
-		
+	arr.map(item => {		
+		if(item.every(x => x >= 0)) {
+			is_negative = true; 
+			return
+		};
+
 		let max = Math.max(...item.filter(x => x < 0));
 		if(max !== -Infinity) {
-			is_negative = true;
 			p *= max;
 		} 
 	});
-	return !is_array ? 'Invalid Argument' : is_negative ? p : 'No negatives';
+	return is_negative ? 'No negatives' : p;
 }
 
 productOfArrayItems([1, 2, 3]);
@@ -91,12 +90,7 @@ const filterArray = (arr = []) => {
 // 5. 
 
 const removeDuplicates = ( arr = []) => {
-	return arr.filter( (item, index) => {
-		if(arr.indexOf(item, index + 1) === -1) {
-			return true
-		}
-		return false
-	})
+	return arr.filter( (item, index) => (arr.indexOf(item, index + 1) === -1))
 }
 
 removeDuplicates([1, 2, 3, 3, 2, 2,5])
@@ -105,14 +99,22 @@ removeDuplicates([1, 2, 3, 3, 2, 2,5])
 // 6. 
 
 const productNeighbours = (arr = []) => {
-	const arrLength = arr.length;
+	// const arrLength = arr.length;
+
+	// let newArr = [];
+
+	// for(let index = 0; index < arrLength - 1 ; index++) {
+	//	newArr.push(arr[index] * arr[index + 1]);
+	// }
+	// return newArr;
 
 	let newArr = [];
 
-	for(let index = 0; index < arrLength - 1 ; index++) {
-		newArr.push(arr[index] * arr[index + 1]);
-	}
-	return newArr;
+	newArr = arr.map((item, index) => {
+		return item * arr[index + 1];
+	})
+
+	newArr.pop();
 }
 
 productNeighbours([3, 7, 12, 5, 20, 0]);
