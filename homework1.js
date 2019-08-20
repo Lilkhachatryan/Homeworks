@@ -85,7 +85,7 @@ const isOddDigitsOfNumber = (number) => {
 	if(number.shift() % 2 === 0) {
 		return false;
 	} else {
-		isOddDigitsOfNumber(number);
+		return isOddDigitsOfNumber(number);
 	}
 }
 
