@@ -59,6 +59,45 @@ allSubStrings('495215',3);
 
 // 5.
 
+function tree(arr) {
+	const res = {};
+
+	for(let el of arr){
+		if(el.parent === null) {
+			res[el.id] = {};
+			arr.splice(arr.indexOf(el), 1);
+			break;
+		}
+	}
+
+	while(arr.length) {
+		for(let el in arr) {
+			const parentObj = findParentNode(el, res);
+			if(parentObj) {
+				parentObj[el.id] = {};
+				arr.splice(arr.indexOf(el), 1);
+			}
+		}
+	}
+
+	return res;
+}
+
+function findParentNode(el, obj) {
+	if(obj.hasOwnProperty(el.parent)) {
+		return obj[el.parent];
+	}
+	let parent;
+	for(let key in obj){
+		if(obj.hasOwnProperty(key)) {
+			parent = findParentNode(el, obj[key]);
+			if(parent) {
+				return parent;
+			}
+		}
+	}
+	return null;
+}
 
 var arr = [
     {parent: null, id: 'a'},
